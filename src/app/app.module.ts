@@ -13,22 +13,23 @@ import { ProductComponent } from './components/common/product/product.component'
 import { OrderComponent } from './components/common/order/order.component';
 import { FakeBackendProvider } from './providers/FakeBackendProvider';
 import { HttpService } from './services/HTTPService';
+import { SharedMaterialModule } from './components/shared/material-module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomePageComponent,
+    // HomePageComponent,
     CartPageComponent,
     OrdersPageComponent,
     HeaderComponent,
     FooterComponent,
-    ProductComponent,
     OrderComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    SharedMaterialModule
   ],
   providers: [
     HttpService,

@@ -15,4 +15,15 @@ export interface Tile {
 })
 export class ProductComponent {
 
+  title = 'Card View Demo';
+
+  gridColumns = 2;
+
+  toggleGridColumns() {
+    this.gridColumns = this.gridColumns === 3 ? 4 : 3;
+  }
+
+  addToCart(num: number){
+    alert('Item Added to Cart Successfully');
+  }
 }

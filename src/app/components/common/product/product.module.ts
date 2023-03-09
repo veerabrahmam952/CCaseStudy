@@ -3,15 +3,14 @@ import { NgModule } from '@angular/core';
 import { Route, RouterModule } from '@angular/router';
 import { ProductComponent } from 'src/app/components/common/product/product.component';
 import { SharedMaterialModule } from 'src/app/components/shared/material-module';
-import { HomePageComponent } from './home-page.component';
 
 export const routes =[
-    {path: '', component: HomePageComponent}
+    {path: '', component: ProductComponent}
 ]
 
 @NgModule({
   declarations: [
-    HomePageComponent
+    ProductComponent
   ],
   imports: [
     CommonModule,
@@ -20,4 +19,4 @@ export const routes =[
     
   ]
 })
-export class HomePageModule { }
+export class ProductPageModule { }

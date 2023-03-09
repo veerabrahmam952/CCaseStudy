@@ -12,13 +12,13 @@
           </p>
         </mat-card-content>
         <mat-card-actions class="card-footer" align="end">
-          <button mat-button class="btn-class">Details</button>
+          <button mat-button class="btn-class" (click)="goToProductDetails(num)">Details</button>
           <div fxFlex>
             <p class="price-tag">
               Price $30
             </p>
           </div>
-          <button mat-button class="btn-class">Add To Cart</button>
+          <button mat-button class="btn-class" (click)="addToCart(num)">Add To Cart</button>
         </mat-card-actions>
       </mat-card>
     </div>

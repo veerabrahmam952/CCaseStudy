@@ -1,0 +1,37 @@
+.content {
+    padding: 16px;
+  }
+  
+  .content > mat-card {
+    margin-bottom: 16px;
+  }
+  
+  .card-header{
+    justify-content: center;
+    background-color: hsl(205deg 98% 48% / 95%);
+    color: #ffffff;
+  }
+  .card-content{
+    background-color: #ffffff;
+    color: hsl(205deg 98% 48% / 95%);
+    font-size: 15px;
+    font-weight: 500;
+  }
+  .card-footer{
+    background-color: hsl(205deg 98% 48% / 95%);
+  }
+  .mdc-card::after{
+    border-color: hsl(205deg 98% 48% / 95%);
+  }
+  .btn-class{
+    background-color: #ffffff;
+    color: hsl(205deg 98% 48% / 95%) !important;
+  }
+  .price-tag{
+    text-align: center;
+    color: #ffffff;
+    font-size: 15px;
+    font-weight: 500;
+    padding-top: 7px;
+  }
+  

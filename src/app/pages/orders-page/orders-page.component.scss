@@ -1,0 +1,123 @@
+mat-grid-tile {
+    background: lightblue;
+  }
+
+  .order-section{
+    border: 1px solid #e1d7d7;
+    padding: 40px;
+    box-shadow: 3px 4px 5px 0px #cbc6c6;
+    width: 60%;
+        margin: auto;
+        // transform: translate(-50%, -50%);
+        // top: 50%;
+        // left: 50%;
+        // position: absolute;
+    
+}
+.btn-class{
+    background-color: hsl(205deg 98% 48% / 95%) !important;
+    color: #fff !important;;
+  }
+.address-section{
+    border: 1px solid #e1d7d7;
+    padding: 40px;
+    box-shadow: 3px 4px 5px 0px #cbc6c6;
+}
+.mat-divider {
+    display: block;
+    margin: 0;
+    border-top-width: 2px;
+    border-top-style: solid;
+}
+.order-desc {
+     padding-left: 20px; 
+     width: 77%;
+     display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+}
+.mat-divider {
+    border-top-color: rgb(114 110 110 / 12%);
+}
+.order-image{
+    border: 2px solid #e5e4e4;
+    width: 15%;
+    min-height: 100px;
+    border-radius: 16px;
+    margin: 5px;
+}
+.img-width {
+    width: 100%;
+    height: 100%;
+    border-radius: 14px;
+    box-sizing: border-box;
+}
+.flex{
+    display: flex;
+    margin: 3px;
+}
+h2,h1,h3,h4{
+    margin: 0 !important;
+}
+.invoice-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 20px;
+}
+.invoice button:first-of-type {
+    margin-right: 7px;
+}
+.desc-color{
+    color: #a5a5a5;
+}
+.quantity{
+    color: #a5a5a5;
+    font-size: 12px;
+}
+.order-title {
+    width: 30%;
+}
+p.desc-color {
+    display: flex !important;
+    justify-content: space-between;
+    font-size: 12px;
+}
+p.desc-color span{
+    border-right: 1px solid;
+    padding-right: 10px;
+}
+p.desc-color span:last-of-type {
+    border: none;
+}
+.mt-4{
+    margin-top: 20px;
+}
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #888; 
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+  }
+.scroll{
+    height: 300px;
+    overflow-y: scroll;
+}
+.w-70{
+    width: 70%;
+}
+.w-30{
+    width: 30%;
+}

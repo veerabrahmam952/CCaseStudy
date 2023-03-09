@@ -20,7 +20,6 @@ import { SharedMaterialModule } from './components/shared/material-module';
     AppComponent,
     // HomePageComponent,
     CartPageComponent,
-    OrdersPageComponent,
     HeaderComponent,
     FooterComponent,
     OrderComponent

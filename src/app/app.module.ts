@@ -14,6 +14,7 @@ import { OrderComponent } from './components/common/order/order.component';
 import { FakeBackendProvider } from './providers/FakeBackendProvider';
 import { HttpService } from './services/HTTPService';
 import { SharedMaterialModule } from './components/shared/material-module';
+import { FakeBackendUsageExampleComponent } from './components/shared/fake-backend-usage-example/fake-backend-usage-example.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { SharedMaterialModule } from './components/shared/material-module';
     CartPageComponent,
     HeaderComponent,
     FooterComponent,
-    OrderComponent
+    OrderComponent,
+    FakeBackendUsageExampleComponent
   ],
   imports: [
     BrowserModule,

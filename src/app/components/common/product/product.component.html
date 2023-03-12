@@ -1,24 +1,36 @@
 <div class="content">
   <div fxLayout="row wrap" fxLayoutGap="16px grid">
-    <div [fxFlex]="(100/gridColumns) + '%'" fxFlex.xs="100%" fxFlex.sm="33%" *ngFor="let num of [1,2]">
+    <div
+      [fxFlex]="100 / gridColumns + '%'"
+      fxFlex.xs="100%"
+      fxFlex.sm="33%"
+      *ngFor="let num of [1, 2]"
+    >
       <mat-card class="mat-elevation-z4">
         <!-- <mat-card-header class="card-header">
           <mat-card-title>Mountains {{num}}</mat-card-title>
         </mat-card-header> -->
-        <img *ngIf="num == 1" mat-card-image src="https://tse2.mm.bing.net/th?id=OIP.YpiwJqZc-AvPnc4GHpt5yQHaHR&pid=Api&P=0">
+        <img
+          *ngIf="num == 1"
+          mat-card-image
+          [src]="product.thumbnail"
+        />
         <mat-card-content *ngIf="num != 1" class="card-content">
-          <p>
-            The Himalayas is a mountain range in Asia.
+          <p id="product-title">
+            {{ product.title }}
+          </p>
+          <p id="product-desc">
+            {{ product.description }}
           </p>
         </mat-card-content>
         <mat-card-actions class="card-footer" align="end" *ngIf="num != 1">
           <!-- <button mat-button class="btn-class" (click)="goToProductDetails(num)">Details</button> -->
           <div fxFlex>
-            <p class="price-tag">
-              Price $30
-            </p>
+            <p class="price-tag">Price $ {{ product.price }}</p>
           </div>
-          <button mat-button class="btn-class" (click)="addToCart(num)">Add To Cart</button>
+          <button mat-button class="btn-class" (click)="addToCart(product.id)">
+            Add To Cart
+          </button>
         </mat-card-actions>
       </mat-card>
     </div>

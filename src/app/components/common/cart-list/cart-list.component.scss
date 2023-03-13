@@ -1,0 +1,29 @@
+mat-card {
+  margin-bottom: 16px;
+}
+
+.card-header {
+  justify-content: center;
+  background-color: hsl(205deg 98% 48% / 95%);
+  color: #ffffff;
+}
+.card-content {
+  background-color: #ffffff;
+  color: hsl(205deg 98% 48% / 95%);
+  font-size: 15px;
+  font-weight: 500;
+}
+.card-actions {
+  display: flex;
+  justify-content: space-between;
+  background-color: hsl(205deg 98% 48% / 95%);
+  color: #ffffff;
+  text-align: center;
+}
+
+.card-footer {
+  background-color: hsl(205deg 98% 48% / 95%);
+}
+.mdc-card::after {
+  border-color: hsl(205deg 98% 48% / 95%);
+}

@@ -1,0 +1,43 @@
+<div fxLayout="column" fxLayoutGap="20px">
+  <!-- Cart items -->
+  <div fxLayout="row wrap" fxLayoutGap="16px grid" fxLayout.xs="column">
+    <div
+      *ngFor="let item of cartItems"
+      fxFlex="30%"
+      fxFlex.md="48%"
+      fxFlex.sm="48%"
+      fxFlex.xs="100%"
+    >
+      <mat-card class="mat-elevation-z4">
+        <mat-card-header class="card-header">
+          <mat-card-title>{{ item.title }}</mat-card-title>
+        </mat-card-header>
+        <img mat-card-image [src]="item.image" alt="Product image" />
+        <mat-card-content class="card-content">
+          <table>
+            <tr>
+              <td>Price:</td>
+              <td fxLayoutAlign="center">{{ item.price | currency }}</td>
+            </tr>
+            <tr>
+              <td>Quantity:</td>
+              <td fxLayout="row" fxLayoutAlign="start center">
+                <button mat-icon-button>
+                  <mat-icon>remove</mat-icon>
+                </button>
+                {{ item.quantity }}
+                <button mat-icon-button>
+                  <mat-icon>add</mat-icon>
+                </button>
+              </td>
+            </tr>
+          </table>
+        </mat-card-content>
+        <mat-card-actions class="card-actions">
+          <button mat-icon-button><mat-icon>info</mat-icon></button>
+          <button mat-icon-button color="warn" size="medeum"><mat-icon>remove_shopping_cart</mat-icon></button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </div>
+</div>

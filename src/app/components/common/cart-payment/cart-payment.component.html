@@ -3,11 +3,12 @@
     <mat-card-title>Payment</mat-card-title>
   </mat-card-header>
   <mat-card-content>
-    <h3>Total: $5000</h3>
-    <h4>Items: </h4>
+    <h3>Total: {{ calculateTotal() | currency }}</h3>
+    <h4>Items:</h4>
     <ul>
-      <li>T-short x2 $2500</li>
-      <li>boots x1 $2500</li>
+      <li *ngFor="let item of items">
+        {{ item.title }} x{{ item.quantity }} {{ item.price | currency }}
+      </li>
     </ul>
   </mat-card-content>
   <mat-card-actions>

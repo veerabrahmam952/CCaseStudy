@@ -22,11 +22,11 @@
             <tr>
               <td>Quantity:</td>
               <td fxLayout="row" fxLayoutAlign="start center">
-                <button mat-icon-button>
+                <button mat-icon-button (click)="changeAmount(item.id, false)">
                   <mat-icon>remove</mat-icon>
                 </button>
                 {{ item.quantity }}
-                <button mat-icon-button>
+                <button mat-icon-button (click)="changeAmount(item.id, true)">
                   <mat-icon>add</mat-icon>
                 </button>
               </td>
@@ -35,7 +35,7 @@
         </mat-card-content>
         <mat-card-actions class="card-actions">
           <button mat-icon-button><mat-icon>info</mat-icon></button>
-          <button mat-icon-button color="warn" size="medeum"><mat-icon>remove_shopping_cart</mat-icon></button>
+          <button mat-icon-button color="warn" size="medeum" (click)="removeItem(item.id)"><mat-icon>remove_shopping_cart</mat-icon></button>
         </mat-card-actions>
       </mat-card>
     </div>

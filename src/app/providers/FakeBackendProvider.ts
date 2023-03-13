@@ -27,9 +27,9 @@ export class FakeBackendInterceptor implements HttpInterceptor {
                     return authenticate();
                 case url.endsWith('/cart/add') && method === 'POST':
                     return addToCart();
-                case url.endsWith('/cart/remove') && method === 'POST':
+                case url.endsWith('/cart') && method === 'DELETE':
                     return removeFromCart();
-                case url.endsWith('/cart/add') && method === 'POST':
+                case url.endsWith('/cart') && method === 'PUT':
                     return changeCartProductAmount();
                 case url.endsWith('/order/new') && method === 'POST':
                     return createOrder();
@@ -75,10 +75,11 @@ export class FakeBackendInterceptor implements HttpInterceptor {
         }
         function removeFromCart(){
             const { user_id, product_id } = body;
-            let userData = AllUsersData.root.find((x: { user_id: any}) => x.user_id === user_id);
-            let indexOfUser = AllUsersData.root.indexOf(userData);
-            if(userData.cart.find((x: {product_id: any}) => x.product_id == product_id)){
-                let indexOfProduct = userData.cart.indexOf(userData);
+            const userData = AllUsersData.root.find((x: { user_id: any}) => x.user_id === user_id);
+            const indexOfUser = AllUsersData.root.indexOf(userData);
+            const product = userData.cart.find((x: {product_id: any}) => x.product_id == product_id)
+            if(product){
+                const indexOfProduct = userData.cart.indexOf(product);
                 userData.cart.splice(indexOfProduct, 1);
                 AllUsersData.root.splice(indexOfUser, 1, userData);
                 localStorage.setItem('AllUsersData', JSON.stringify(AllUsersData));

@@ -6,6 +6,7 @@ import { MatCardModule } from "@angular/material/card";
 import { MatGridListModule } from "@angular/material/grid-list";
 import { MatIconModule } from "@angular/material/icon";
 import { MatListModule } from "@angular/material/list";
+import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
 import { RouterModule } from "@angular/router";
 import { CartListComponent } from "src/app/components/common/cart-list/cart-list.component";
 import { CartPaymentComponent } from "src/app/components/common/cart-payment/cart-payment.component";
@@ -27,6 +28,7 @@ const routes = [{path: '', component: CartPageComponent}]
         MatButtonModule,
         FlexLayoutModule,
         MatIconModule,
+        MatProgressSpinnerModule,
         RouterModule.forChild(routes)
     ]
 })

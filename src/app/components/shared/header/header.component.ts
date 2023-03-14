@@ -29,7 +29,7 @@ export class HeaderComponent implements OnInit {
       `/cart/${userId}`
     )
     .subscribe((data) => {
-      if(data.cart.length > 0){
+      if(data.cart?.length > 0){
         this.itemCountService.updateItemCartCont(data.cart.length)
       } 
     })

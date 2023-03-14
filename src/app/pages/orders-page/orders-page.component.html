@@ -1,9 +1,9 @@
 <div class="body-section">
     <div>
-        <section class="order-section">
+        <section class="order-section" *ngFor="let order of Orders">
             <div class="invoice-section">
                 <div class="order-id">
-                    <h1>Order ID: 12345</h1>
+                    <h1>Order ID: {{order.order_id}}</h1>
                 </div>
                 <div class="invoice">
                     <button mat-button color="primary" class="btn-class">Invoice</button>
@@ -14,19 +14,19 @@
             </div>
             <mat-divider></mat-divider>
             <div class="scroll">
-                <div *ngFor="let num of [1,2,3,4,5,6]">
+                <div *ngFor="let oDetail of order.orderDetails">
                     <div class="flex mt-4">
                         <div class="order-image">
-                            <img class="img-width" src="https://imgd.aeplcdn.com/1280x720/n/cw/ec/53743/right-side-view.jpeg?q=100" alt="">
+                            <img class="img-width" [src]="oDetail.product.thumbnail" alt="">
                         </div>
                         <div class="order-desc">
                             <div class="order-title">
-                                <h2>Lorem</h2>
-                                <p class="desc-color"><span>space gary</span><span>32 GB </span> <span> 1TB</span></p>
+                                <h2>{{oDetail.product.brand}}</h2>
+                                <p class="desc-color">{{oDetail.product.description}}</p>
                             </div>
                             <div class="order-price">
-                                <h4>$300</h4>
-                                <span class="quantity">QTY:1</span>
+                                <h4>${{oDetail.product.price}}</h4>
+                                <span class="quantity">QTY:{{oDetail.amount}}</span>
                             </div>
                         </div>
                     </div>

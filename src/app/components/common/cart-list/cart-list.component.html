@@ -1,7 +1,7 @@
 <div fxLayout="column" fxLayoutGap="20px">
   <!-- Cart items -->
-  <div fxLayout="row wrap" fxLayoutGap="16px grid" fxLayout.xs="column">
-    <div
+  <div fxLayout="row wrap" style=" justify-content: space-between; padding: 0 10px" fxLayout.xs="column">
+    <div style="padding-bottom: 32px;"
       *ngFor="let item of cartItems"
       fxFlex="30%"
       fxFlex.md="48%"
@@ -9,10 +9,10 @@
       fxFlex.xs="100%"
     >
       <mat-card class="mat-elevation-z4">
-        <mat-card-header class="card-header">
+        <mat-card-header class="card-header text-oneline">
           <mat-card-title>{{ item.title }}</mat-card-title>
         </mat-card-header>
-        <img mat-card-image [src]="item.image" alt="Product image" />
+        <img class="cart-img" [src]="item.image" alt="Product image" />
         <mat-card-content class="card-content">
           <table>
             <tr>

@@ -1,11 +1,22 @@
-mat-card {
-  margin-bottom: 16px;
+.cart-img{
+  object-fit: cover; /*this makes the image in src fit to the size specified below*/
+  width: 100%; /* Here you can use wherever you want to specify the width and also the height of the <img>*/
+  height: 150px;
 }
 
 .card-header {
   justify-content: center;
+  text-align: center;
+  vertical-align: middle;
   background-color: hsl(205deg 98% 48% / 95%);
   color: #ffffff;
+  padding: 10px 10px;
+  display: flow-root;
+}
+.text-oneline ::ng-deep * {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
 }
 .card-content {
   background-color: #ffffff;

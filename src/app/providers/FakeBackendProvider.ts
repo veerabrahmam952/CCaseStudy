@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpRequest, HttpResponse, HttpHandler, HttpEvent, HttpInterceptor, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { async, Observable, of, throwError } from 'rxjs';
+import { async, BehaviorSubject, Observable, of, throwError } from 'rxjs';
 import { delay, mergeMap, materialize, dematerialize } from 'rxjs/operators';
 
 let AllUsers: any = {root: []};
@@ -12,6 +12,7 @@ getWorkData("../../assets/JSONData/usersData.json", AllUsersData, true, "AllUser
 
 @Injectable()
 export class FakeBackendInterceptor implements HttpInterceptor {
+    
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         const { url, method, headers, body } = request;
         

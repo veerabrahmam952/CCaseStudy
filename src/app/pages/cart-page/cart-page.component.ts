@@ -6,12 +6,15 @@ import {
   flatMap,
   mergeMap,
   toArray,
+  iif,
+  of,
   forkJoin,
   Observable,
   combineLatest,
 } from 'rxjs';
 import { Product } from 'src/app/components/common/product/product.component';
 import { HttpService } from 'src/app/services/HTTPService';
+import { ItemCartCountService } from 'src/app/services/item-cart-count.service';
 
 interface Item {
   id: number;
@@ -32,7 +35,7 @@ export class CartPageComponent implements OnInit {
   items: Item[] = [];
   isLoading = true;
 
-  constructor(private httpClient: HttpService) {}
+  constructor(private httpClient: HttpService, public itemCountService: ItemCartCountService) {}
 
   ngOnInit(): void {
     this.fetchCart();
@@ -61,34 +64,37 @@ export class CartPageComponent implements OnInit {
   }
 
   fetchCart() {
+    debugger;
     this.httpClient
       .getData<{ cart: { product_id: string; amount: number }[] }>(
         `/cart/${userId}`
       )
       .pipe(
-        mergeMap(({ cart }) =>
-          forkJoin(
-            cart.map((ci) =>
-              this.httpClient
-                .getData<{ product: Product }>(`/products/${ci.product_id}`)
-                .pipe(
-                  map(({ product }) => {
-                    return {
-                      id: product.id,
-                      title: product.title,
-                      price: product.price,
-                      image: product.thumbnail,
-                      quantity: ci.amount,
-                    };
-                  })
-                )
-            )
+      mergeMap(({ cart }) =>
+        iif(()=> cart.length > 0, forkJoin(
+          cart.map((ci) =>
+            this.httpClient
+              .getData<{ product: Product }>(`/products/${ci.product_id}`)
+              .pipe(
+                map(({ product }) => {
+                  return {
+                    id: product.id,
+                    title: product.title,
+                    price: product.price,
+                    image: product.thumbnail,
+                    quantity: ci.amount,
+                  };
+                })
+              )
           )
-        )
+        ), of([]))
+        
+      )     
       )
       .subscribe((data) => {
         this.isLoading = false;
         this.items = data;
+        this.itemCountService.updateItemCartCont(data.length);
       });
   }
 }

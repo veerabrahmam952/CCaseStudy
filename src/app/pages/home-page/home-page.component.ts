@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { NavigationExtras, Route, Router } from '@angular/router';
+import { FakeBackendInterceptor } from 'src/app/providers/FakeBackendProvider';
 import { HttpService } from 'src/app/services/HTTPService';
+import { ItemCartCountService } from 'src/app/services/item-cart-count.service';
 
 export interface Product {
   brand: string;
@@ -26,7 +28,7 @@ export class HomePageComponent implements OnInit {
 
   gridColumns = 3;
   products: Array<Product> = [];
-  constructor(private router: Router, private httpClient: HttpService) {
+  constructor(private router: Router, private httpClient: HttpService, private itemCountService: ItemCartCountService) {
     this.httpClient.getData('/products').subscribe((data: any) => {
       console.log('/products');
       console.log(data);
@@ -48,7 +50,12 @@ export class HomePageComponent implements OnInit {
       .subscribe((data: any) => {
         console.log('/cart/add');
         console.log(data);
-        alert('Item Added to Cart Successfully...!');
+        if(data === "this product already is cart"){
+          alert('Item already exists in the Cart...!');
+        }else{
+          this.itemCountService.updateItemCartCont(data.cart.length);
+          alert('Item Added to Cart Successfully...!');
+        }
       });
   }
 

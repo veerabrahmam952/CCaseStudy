@@ -33,7 +33,7 @@ export class FakeBackendUsageExampleComponent {
             console.log(data);
             this.httpClient.getData("/order/583c3ac3f38e84297c002546").subscribe((data:any) => {
               console.log("/order//583c3ac3f38e84297c002546");
-              console.log(data);
+              console.log(data); 
             });
           });
         });

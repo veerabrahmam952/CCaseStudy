@@ -4,8 +4,8 @@
   </mat-card-header>
   <mat-card-content>
     <h3>Total: {{ calculateTotal() | currency }}</h3>
-    <h4>Items:</h4>
-    <ul>
+    <h4 class="items">Items:</h4>
+    <ul class="items">
       <li *ngFor="let item of items">
         {{ item.title }} x{{ item.quantity }} {{ item.price | currency }}
       </li>

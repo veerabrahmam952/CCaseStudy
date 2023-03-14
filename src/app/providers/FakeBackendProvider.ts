@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpRequest, HttpResponse, HttpHandler, HttpEvent, HttpInterceptor, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { async, Observable, of, throwError } from 'rxjs';
+import { async, BehaviorSubject, Observable, of, throwError } from 'rxjs';
 import { delay, mergeMap, materialize, dematerialize } from 'rxjs/operators';
 
 let AllUsers: any = {root: []};
@@ -12,6 +12,7 @@ getWorkData("../../assets/JSONData/usersData.json", AllUsersData, true, "AllUser
 
 @Injectable()
 export class FakeBackendInterceptor implements HttpInterceptor {
+    
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         const { url, method, headers, body } = request;
         
@@ -119,7 +120,7 @@ export class FakeBackendInterceptor implements HttpInterceptor {
         function getCart(user_id: string){
             if(user_id){
                 let userData = AllUsersData.root.find((x: { user_id: any }) => x.user_id == user_id);
-                let userCart = userData.cart;
+                let userCart = userData?.cart;
                 if(userCart){
                     return ok({
                         cart: userCart
@@ -136,10 +137,18 @@ export class FakeBackendInterceptor implements HttpInterceptor {
                 let indexOfUser = AllUsersData.root.indexOf(userData);
                 let cart = userData.cart;
                 let currentOrder;
+                let products:any=[];
                 if(cart.length && cart.length > 0){
+                    cart.forEach((item:any)=>{
+                      let _product_ ;
+                      getProductByID(item.product_id).subscribe((data:any)=>{
+                        _product_ = data.body.product;
+                      });
+                      products.push({product: _product_, amount: item.amount});
+                    });
                     currentOrder = {
                         order_id: Date.now().toString(),
-                        orderDetails: cart
+                        orderDetails: products
                     }
                     userData.cart = [];
                     userData.orders.push(currentOrder)
@@ -155,6 +164,7 @@ export class FakeBackendInterceptor implements HttpInterceptor {
         }
         function getOrders(user_id: string){
             if(user_id){
+                debugger;
                 let userData = AllUsersData.root.find((x: { user_id: any }) => x.user_id == user_id);
                 let userOrders = userData.orders;
                 if(userOrders){

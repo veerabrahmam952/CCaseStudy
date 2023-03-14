@@ -1,7 +1,14 @@
 <div class="content" fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" fxLayoutAlign="space-between">
     <mat-spinner *ngIf="isLoading else elseBlock" class="spinner"/>
     <ng-template #elseBlock>
-        <app-cart-list [cartItems]="items" fxFlex (onRemoveItem)="removeItem($event)" (onChangeAmount)="changeQuantity($event)"/>
-        <app-cart-payment [items]="items" fxFlex.lg="20%" fxFlex.md="25%"/>
+        <div *ngIf="items.length>0">
+            <app-cart-list [cartItems]="items" fxFlex (onRemoveItem)="removeItem($event)" (onChangeAmount)="changeQuantity($event)"/>
+            <app-cart-payment [items]="items" fxFlex.lg="20%" fxFlex.md="25%"/>
+        </div>
+        <div *ngIf="items.length<=0">
+            <mat-card>
+                <mat-card-content>No Items in the cart continue shopping<span><a routerLink="/">here</a></span></mat-card-content>
+            </mat-card>
+        </div>
     </ng-template>
 </div>

@@ -1,4 +1,7 @@
 <div class="content" fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" fxLayoutAlign="space-between">
-    <app-cart-list fxFlex/>
-    <app-cart-payment fxFlex.lg="20%" fxFlex.md="25%"/>
+    <mat-spinner *ngIf="isLoading else elseBlock" class="spinner"/>
+    <ng-template #elseBlock>
+        <app-cart-list [cartItems]="items" fxFlex (onRemoveItem)="removeItem($event)" (onChangeAmount)="changeQuantity($event)"/>
+        <app-cart-payment [items]="items" fxFlex.lg="20%" fxFlex.md="25%"/>
+    </ng-template>
 </div>

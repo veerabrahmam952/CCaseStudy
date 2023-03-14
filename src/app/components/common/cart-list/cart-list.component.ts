@@ -1,7 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 interface Item {
-  id: string;
+  id: number;
   title: string;
   price: number;
   quantity: number;
@@ -14,38 +14,32 @@ interface Item {
   styleUrls: ['./cart-list.component.scss'],
 })
 export class CartListComponent {
-  cartItems: Item[] = [
-    {
-      id: '1',
-      image:
-        'https://tse2.mm.bing.net/th?id=OIP.YpiwJqZc-AvPnc4GHpt5yQHaHR&pid=Api&P=0',
-      price: 20,
-      quantity: 2,
-      title: 'test',
-    },
-    {
-      id: '2',
-      image:
-        'https://tse2.mm.bing.net/th?id=OIP.YpiwJqZc-AvPnc4GHpt5yQHaHR&pid=Api&P=0',
-      price: 20,
-      quantity: 2,
-      title: 'test',
-    },
-    {
-      id: '3',
-      image:
-        'https://tse2.mm.bing.net/th?id=OIP.YpiwJqZc-AvPnc4GHpt5yQHaHR&pid=Api&P=0',
-      price: 20,
-      quantity: 2,
-      title: 'test',
-    },
-    {
-      id: '4',
-      image:
-        'https://tse2.mm.bing.net/th?id=OIP.YpiwJqZc-AvPnc4GHpt5yQHaHR&pid=Api&P=0',
-      price: 20,
-      quantity: 2,
-      title: 'test',
-    },
-  ];
+  @Input()
+  cartItems: Item[] = [];
+
+  @Output()
+  onRemoveItem = new EventEmitter();
+
+  @Output()
+  onChangeAmount = new EventEmitter();
+
+  removeItem(id: number) {
+    this.onRemoveItem.emit(id);
+  }
+
+  changeAmount(id: number, increase: boolean) {
+    const item = this.cartItems.find((ci) => ci.id === id);
+
+    if (!item) throw Error('No such item');
+
+    if (!increase && item.quantity == 1) {
+      this.removeItem(id);
+      return;
+    }
+
+    this.onChangeAmount.emit({
+      id,
+      quantity: increase ? item.quantity + 1 : item.quantity - 1,
+    });
+  }
 }

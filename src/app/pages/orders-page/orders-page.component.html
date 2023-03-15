@@ -13,7 +13,7 @@
                 </div>
             </div>
             <mat-divider></mat-divider>
-            <div class="scroll">
+            <div class="scroll"  [ngStyle]="{'height':getWidth(order)?'300px':'auto'}">
                 <div *ngFor="let oDetail of order.orderDetails">
                     <div class="flex mt-4">
                         <div class="order-image">

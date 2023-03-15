@@ -1,13 +1,16 @@
 mat-grid-tile {
     background: lightblue;
   }
-
+  .body-section {
+    padding-bottom: 50px;
+}
   .order-section{
     border: 1px solid #e1d7d7;
     padding: 40px;
     box-shadow: 3px 4px 5px 0px #cbc6c6;
     width: 60%;
         margin: auto;
+        margin-bottom: 15px;
         // transform: translate(-50%, -50%);
         // top: 50%;
         // left: 50%;
@@ -112,7 +115,7 @@ p.desc-color span:last-of-type {
     background: #555; 
   }
 .scroll{
-    height: 300px;
+    //height: 300px;
     overflow-y: scroll;
 }
 .w-70{
@@ -121,3 +124,29 @@ p.desc-color span:last-of-type {
 .w-30{
     width: 30%;
 }
+
+
+
+@media only screen and (max-width: 1024px) {
+    .order-section{
+        padding: 10px;
+        width: 80%;
+    }
+    .invoice-section, .flex.mt-4 {
+        flex-direction: column;
+    }
+    .order-image {
+        width: 95% !important;
+    }
+    .order-desc {
+        width: 100% !important;
+        flex-direction: column;
+        padding-left: 0;
+    }
+    .order-title{
+        width: 100%;
+    }
+    .order-id h1 {
+        font-size: 18px !important;
+    }
+  }

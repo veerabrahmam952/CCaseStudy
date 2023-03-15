@@ -31,6 +31,7 @@ export interface orderDetails{
 
 export class OrdersPageComponent implements OnInit{
   Orders:Array<Order>=[];
+  scrollEnable!: boolean;
   constructor(private httpClient: HttpService){
     this.httpClient.getData("/order/583c3ac3f38e84297c002546").subscribe((data:any) => {
       console.log("/order//583c3ac3f38e84297c002546");
@@ -41,5 +42,11 @@ export class OrdersPageComponent implements OnInit{
   ngOnInit(): void {
     
   }
-
+  getWidth(order:any){
+    if(order.orderDetails.length>2){
+      return true;
+    } else{
+      return false;
+    }
+  }
 }

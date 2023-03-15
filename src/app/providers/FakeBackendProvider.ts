@@ -164,7 +164,7 @@ export class FakeBackendInterceptor implements HttpInterceptor {
         }
         function getOrders(user_id: string){
             if(user_id){
-                debugger;
+                //debugger;
                 let userData = AllUsersData.root.find((x: { user_id: any }) => x.user_id == user_id);
                 let userOrders = userData.orders;
                 if(userOrders){

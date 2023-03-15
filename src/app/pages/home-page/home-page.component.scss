@@ -17,6 +17,8 @@
   color: hsl(205deg 98% 48% / 95%);
   font-size: 15px;
   font-weight: 500;
+  max-height: 125px;
+  height: 125px;
 }
 .card-footer{
   background-color: hsl(205deg 98% 48% / 95%);
@@ -34,5 +36,18 @@
   font-size: 15px;
   font-weight: 500;
   padding-top: 7px;
+}
+
+.cart-img{
+  object-fit: cover; /*this makes the image in src fit to the size specified below*/
+  width: 100%; /* Here you can use wherever you want to specify the width and also the height of the <img>*/
+  height: 150px;
+}
+.p-title{
+  padding: 10px 0px 0px 0px;
+}
+.p-description{
+  object-fit: cover;
+  padding: 10px 0px 10px 0px;
 }
 

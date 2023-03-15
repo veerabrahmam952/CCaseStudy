@@ -10,12 +10,12 @@
         <!-- <mat-card-header class="card-header">
           <mat-card-title>Mountains {{num}}</mat-card-title>
         </mat-card-header> -->
-        <img mat-card-image [src]="product?.thumbnail" height="100%" />
+        <img mat-card-image class="cart-img" [src]="product?.thumbnail" height="100%" />
         <mat-card-content class="card-content">
-          <p id="product-title">
+          <p id="product-title" class="p-title">
             {{ product?.title }}
           </p>
-          <p id="product-desc">
+          <p id="product-desc" class="p-description">
             {{ product?.description }}
           </p>
         </mat-card-content>

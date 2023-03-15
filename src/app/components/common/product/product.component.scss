@@ -34,4 +34,18 @@
     font-weight: 500;
     padding-top: 7px;
   }
-  
+  .p-description{
+    object-fit: cover;
+    padding: 10px 0px 10px 0px;
+  }
+  .rating{
+    margin: 3px;
+  }
+  .p-rating{
+    object-fit: cover;
+    padding: 10px 0px 10px 0px;
+    display: flex;
+  }
+  .h-card{
+    height: 100%;
+  }

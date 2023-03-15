@@ -6,7 +6,7 @@
       fxFlex.sm="33%"
       *ngFor="let num of [1, 2]"
     >
-      <mat-card class="mat-elevation-z4">
+      <mat-card class="mat-elevation-z4 h-card">
         <!-- <mat-card-header class="card-header">
           <mat-card-title>Mountains {{num}}</mat-card-title>
         </mat-card-header> -->
@@ -14,13 +14,30 @@
           *ngIf="num == 1"
           mat-card-image
           [src]="product.thumbnail"
+          class="h-card"
         />
         <mat-card-content *ngIf="num != 1" class="card-content">
           <p id="product-title">
             {{ product.title }}
           </p>
-          <p id="product-desc">
+          <p id="product-desc" class="p-description">
             {{ product.description }}
+          </p>
+          <p id="product-rating" class="p-rating">
+            <mat-icon>star</mat-icon>
+            <span class="rating">{{ product.rating }}</span>
+          </p>
+          <p id="product-discount" class="p-rating">
+            <mat-icon>local_offer</mat-icon>
+            <span class="rating">{{ product.discountPercentage }} % off on Price</span>
+          </p>
+          <p id="product-category" class="p-rating">
+            <span>Category: </span>
+            <span>{{ product.category }}</span>
+          </p>
+          <p id="product-category" class="p-rating">
+            <span>Brand: </span>
+            <span>{{ product.brand }}</span>
           </p>
         </mat-card-content>
         <mat-card-actions class="card-footer" align="end" *ngIf="num != 1">

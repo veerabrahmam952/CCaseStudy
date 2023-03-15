@@ -41,6 +41,7 @@ export class CartPageComponent implements OnInit {
     this.fetchCart();
   }
 
+  // Removes Item from the cart and update the list in the Cart using Product Id
   removeItem(id: number) {
     this.isLoading = true;
     this.httpClient
@@ -50,6 +51,7 @@ export class CartPageComponent implements OnInit {
       });
   }
 
+  // Increase or decrese the product and upadte the qunatity in storage
   changeQuantity(event: {id: number, quantity: number}) {
     console.log(event);
     this.httpClient
@@ -63,6 +65,7 @@ export class CartPageComponent implements OnInit {
       });
   }
 
+  //Load the Cart Items
   fetchCart() {
     debugger;
     this.httpClient

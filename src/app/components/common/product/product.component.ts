@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { HttpService } from 'src/app/services/HTTPService';
+import { ItemCartCountService } from 'src/app/services/item-cart-count.service';
 
 export interface Tile {
   color: string;
@@ -56,7 +57,7 @@ export class ProductComponent implements OnInit{
 
   productID: number=0;
 
-  constructor(private httpClient: HttpService, private route: ActivatedRoute,){
+  constructor(private httpClient: HttpService, private route: ActivatedRoute,public itemCountService: ItemCartCountService){
     this.route.queryParams.subscribe(async(params) => {
       if (params && params['productId']) {
         this.productID = params['productId'];
@@ -73,10 +74,28 @@ export class ProductComponent implements OnInit{
     this.gridColumns = this.gridColumns === 3 ? 4 : 3;
   }
 
-  addToCart(num: number){
-    alert('Item Added to Cart Successfully');
+  // Adding Items to the Cart using ID
+  // Updated Cart Items with CartAdd API
+  addToCart(prodId: number){
+    let _prod_add_obj_ = {
+      user_id: '583c3ac3f38e84297c002546',
+      product_id: prodId,
+    }
+    this.httpClient
+      .postData('/cart/add', _prod_add_obj_)
+      .subscribe((data: any) => {
+        console.log('/cart/add');
+        console.log(data);
+        if(data === "this product already is cart"){
+          alert('Item already exists in the Cart...!');
+        }else{
+          this.itemCountService.updateItemCartCont(data.cart.length);
+          alert('Item Added to Cart Successfully...!');
+        }
+      });
   }
 
+  // Getting Product By ID using ProductByID API and display it on UI
   getProductById(prodId:number){
     let _sub_url_ = "/products/" + prodId;
     this.httpClient.getData(_sub_url_).subscribe((data:any) => {

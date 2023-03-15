@@ -1,3 +1,5 @@
+// All Material Modules are Imported and exported here
+// We can utilize theses modules in our component
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';

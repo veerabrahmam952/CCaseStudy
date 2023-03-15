@@ -21,12 +21,14 @@ export class CartPaymentComponent {
   constructor(private httpClient: HttpService, private router: Router, public itemCountService: ItemCartCountService) {
   }
 
+  // Claculating Total Amount Price in the cart
   calculateTotal() {
     return this.items.length > 0
       ? this.items.map((i) => i.quantity * i.price).reduce((s, e) => s + e)
       : 0;
   }
 
+  // Placing the order and call the orderNew Api to insert into order
   goToOrder(){
     this.httpClient.postData("/order/new", {user_id: "583c3ac3f38e84297c002546"}).subscribe((data:any) => {
       console.log("/order/new");
@@ -35,6 +37,8 @@ export class CartPaymentComponent {
       this.router.navigate(["/"]);
     });
   }
+  
+  // Update the Cart Item Count to show it on Cart icon
   getCartItemCount(){
     this.httpClient
     .getData<{ cart: { product_id: string; amount: number }[] }>(

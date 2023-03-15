@@ -29,6 +29,7 @@ export class HomePageComponent implements OnInit {
   gridColumns = 3;
   products: Array<Product> = [];
   constructor(private router: Router, private httpClient: HttpService, private itemCountService: ItemCartCountService) {
+    // Load the all the products
     this.httpClient.getData('/products').subscribe((data: any) => {
       console.log('/products');
       console.log(data);
@@ -40,6 +41,7 @@ export class HomePageComponent implements OnInit {
     this.gridColumns = this.gridColumns === 3 ? 4 : 3;
   }
 
+  // Add Items to the Cart
   addToCart(prodId: number) {
     let _prod_add_obj_ = {
       user_id: '583c3ac3f38e84297c002546',
@@ -59,6 +61,7 @@ export class HomePageComponent implements OnInit {
       });
   }
 
+  // Show the product details by navigating to product page
   goToProductDetails(prodId: number) {
     let navigationExtras: NavigationExtras = {
       queryParams: {

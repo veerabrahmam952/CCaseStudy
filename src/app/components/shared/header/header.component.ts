@@ -23,6 +23,7 @@ export class HeaderComponent implements OnInit {
     });
   }
 
+  //Get Cart Item Count from Cart API and disply count on CartIcon
   getCartItemCount(){
     this.httpClient
     .getData<{ cart: { product_id: string; amount: number }[] }>(

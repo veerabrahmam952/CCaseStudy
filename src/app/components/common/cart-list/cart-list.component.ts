@@ -23,10 +23,12 @@ export class CartListComponent {
   @Output()
   onChangeAmount = new EventEmitter();
 
+  // Removing Item from the cart by Id number
   removeItem(id: number) {
     this.onRemoveItem.emit(id);
   }
 
+  // Increasing or decreasing the quantity of the product
   changeAmount(id: number, increase: boolean) {
     const item = this.cartItems.find((ci) => ci.id === id);
 
